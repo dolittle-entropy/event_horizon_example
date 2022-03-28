@@ -1,0 +1,10 @@
+{
+    "5a4a2115-48cf-4055-8b8f-aac0bde47b7b": {
+        "host": "runtime-producer",
+        "port": "50052"
+    },
+    "b13e7583-dfe0-41d8-a706-4d25741fdaf5": {
+        "host": "runtime-consumer",
+        "port": "50052"
+    }
+}

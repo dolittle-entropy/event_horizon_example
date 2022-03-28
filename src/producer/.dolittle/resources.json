@@ -1,0 +1,20 @@
+{
+    "8cfd0dbc-99e5-43d4-9cb3-3d46d240b06b": {
+        "eventStore": {
+            "servers": [ "mongo" ],
+            "database": "event_store_producer"
+        },
+        "readModels": {
+            "servers": [ "mongo" ],
+            "database": "read_models_producer"
+        },
+        "projections": {
+            "servers": [ "mongo" ],
+            "database": "projections_producer"
+        },
+        "embeddings": {
+            "servers": [ "mongo" ],
+            "database": "embeddings_producer"
+        }
+    }
+}
