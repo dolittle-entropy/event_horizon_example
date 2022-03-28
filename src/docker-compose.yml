@@ -1,0 +1,34 @@
+version: '3.1'
+services:
+  mongo:
+    image: dolittle/mongodb:4.2.2
+    ports:
+      - 27256:27017
+    logging:
+      driver: none
+    volumes:
+      - ./data:/data/db
+
+  runtime-producer:
+    image: dolittle/runtime:6.1.0
+    volumes:
+      - ./producer/.dolittle/resources.json:/app/.dolittle/resources.json
+      - ./tenants.json:/app/.dolittle/tenants.json
+      - ./microservices.json:/app/.dolittle/microservices.json
+      - ./appsettings.json:/app/appsettings.json
+    ports:
+      - 8256:9700
+      - 50256:50052
+      - 50257:50053
+
+  runtime-consumer:
+    image: dolittle/runtime:6.1.0
+    volumes:
+      - ./consumer/.dolittle/resources.json:/app/.dolittle/resources.json
+      - ./tenants.json:/app/.dolittle/tenants.json
+      - ./microservices.json:/app/.dolittle/microservices.json
+      - ./appsettings.json:/app/appsettings.json
+    ports:
+      - 8257:9700
+      - 50258:50052
+      - 50259:50053
