@@ -1,6 +1,7 @@
 using Dolittle.SDK;
 using Dolittle.SDK.Tenancy;
 using Consumer.Bootstrapping;
+using Consumer.Domain;
 
 var builder = WebApplication.CreateBuilder(
     new WebApplicationOptions()
@@ -17,7 +18,7 @@ var producer = builder.Build();
 
 producer.SetupRouting(producer.Environment);
 
-await producer
+var clientTask = producer
     .Services
     .GetRequiredService<Client>()
     .WithContainer(new Container(producer.Services))
@@ -30,7 +31,7 @@ Console.WriteLine(
 var tenantId = producer.Services.GetRequiredService<TenantId>();
 
 await dolittleClient
-    .AggregateOf<ApplicationAggreageteRoot>(
+    .AggregateOf<ConsumerAggregateRoot>(
         SingleTenantExecutionContextManager.ForCurrentTenant
     )
     .Perform(

@@ -1,6 +1,5 @@
 using System.Reflection;
 using Dolittle.SDK;
-using Dolittle.SDK.Aggregates;
 using Dolittle.SDK.Events;
 
 namespace Consumer.Bootstrapping;
@@ -30,29 +29,32 @@ public static class DolittleClientBootstrapper
         var runtimeHost = configuration["dolittle:runtime:host"];
         var runtimePort = ushort.Parse(configuration["dolittle:runtime:port"]);
 
+        // hard-coded instead of read from event-horizons.json
+        var consumerTenant = new Guid("8cfd0dbc-99e5-43d4-9cb3-3d46d240b06b");
+
+        var producerMicroservice = new Guid("5a4a2115-48cf-4055-8b8f-aac0bde47b7b");
+        var producerTenant = new Guid("8cfd0dbc-99e5-43d4-9cb3-3d46d240b06b");
+        var producerStream = new Guid("2d58d78f-f1ba-4469-86b3-7b89f8018290");
+        var scope = new Guid("90e0d0db-ac7d-4815-92d3-1298f9d326bb");
+
         return Client
             .ForMicroservice(new Guid(microservice))
             .WithRuntimeOn(runtimeHost, runtimePort)
-            .WithEventTypes(b => b.Register<StartedEvent>())
-            // .WithEventTypes(b => b.RegisterAllFrom(_thisAssembly))
-            // .WithEventHandlers(b => b.RegisterAllFrom(_thisAssembly))
+            .WithEventTypes(b => b.RegisterAllFrom(_thisAssembly))
+            .WithEventHorizons(eventHorizons =>
+                eventHorizons
+                    .ForTenant(
+                        consumerTenant,
+                        subscribe => subscribe
+                            .FromProducerMicroservice(producerMicroservice)
+                            .FromProducerTenant(producerTenant)
+                            .FromProducerStream(producerStream)
+                            .FromProducerPartition(PartitionId.Unspecified)
+                            .ToScope(scope)
+                    )
+            )
+            .WithEventHandlers(b => b.RegisterAllFrom(_thisAssembly))
             // .WithProjections(b => b.RegisterAllFrom(_thisAssembly))
             .Build();
-    }
-}
-
-[EventType("f799e77a-6592-4a72-b1fc-c2c7106ee468")]
-public record StartedEvent(string Timestamp);
-
-[AggregateRoot("7f009911-c812-49a0-9357-a2bc4ac9f0d5")]
-public class ApplicationAggreageteRoot : AggregateRoot
-{
-    public ApplicationAggreageteRoot(EventSourceId eventSourceId) : base(eventSourceId)
-    {
-    }
-
-    public void Start(string timestamp)
-    {
-        Apply(new StartedEvent(timestamp));
     }
 }

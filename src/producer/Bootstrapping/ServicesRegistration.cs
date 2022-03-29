@@ -1,4 +1,5 @@
 using Dolittle.SDK;
+using Dolittle.SDK.Events.Handling;
 
 namespace Producer.Bootstrapping;
 
@@ -29,7 +30,6 @@ public static class ServicesRegistration
                 .AddClasses()
                 .AsMatchingInterface()
         );
-        // services.Scan(select => select.FromEntryAssembly().AddClasses().AsSelf().WithTransientLifetime());
 
         services.AddSingleton(dolittleClient);
 
