@@ -15,7 +15,7 @@ services:
     image: dolittle/runtime:6.1.0
     volumes:
       - ./producer/.dolittle/resources.json:/app/.dolittle/resources.json
-      - ./producer/.dolittle/event-horizon-consents.json:/app/.dolittle/event-horizon-consents.json
+      - ./event-horizon-consents.json:/app/.dolittle/event-horizon-consents.json
       - ./tenants.json:/app/.dolittle/tenants.json
       - ./microservices.json:/app/.dolittle/microservices.json
       - ./appsettings.json:/app/appsettings.json
