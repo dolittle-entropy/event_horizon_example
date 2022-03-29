@@ -30,7 +30,6 @@ services:
     image: dolittle/runtime:6.1.0
     volumes:
       - ./consumer/.dolittle/resources.json:/app/.dolittle/resources.json
-      # - ./consumer/.dolittle/event-horizons.json:/app/.dolittle/event-horizons.json
       - ./tenants.json:/app/.dolittle/tenants.json
       - ./microservices.json:/app/.dolittle/microservices.json
       - ./appsettings.json:/app/appsettings.json
