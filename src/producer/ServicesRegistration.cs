@@ -21,7 +21,7 @@ public static class ServicesRegistration
     public static void RegisterServices(this IServiceCollection services, Client dolittleClient)
     {
         services.Scan(select => select.FromEntryAssembly().AddClasses().AsMatchingInterface());
-        services.Scan(select => select.FromEntryAssembly().AddClasses().AsSelf().WithTransientLifetime());
+        // services.Scan(select => select.FromEntryAssembly().AddClasses().AsSelf().WithTransientLifetime());
 
         services.AddSingleton(dolittleClient);
 
