@@ -10,9 +10,12 @@ services:
       - ./data:/data/db
 
   runtime-producer:
+    depends_on:
+      - mongo
     image: dolittle/runtime:6.1.0
     volumes:
       - ./producer/.dolittle/resources.json:/app/.dolittle/resources.json
+      - ./producer/.dolittle/event-horizon-consents.json:/app/.dolittle/event-horizon-consents.json
       - ./tenants.json:/app/.dolittle/tenants.json
       - ./microservices.json:/app/.dolittle/microservices.json
       - ./appsettings.json:/app/appsettings.json
@@ -22,9 +25,12 @@ services:
       - 50257:50053
 
   runtime-consumer:
+    depends_on:
+      - mongo
     image: dolittle/runtime:6.1.0
     volumes:
       - ./consumer/.dolittle/resources.json:/app/.dolittle/resources.json
+      - ./consumer/.dolittle/event-horizons.json:/app/.dolittle/event-horizons.json
       - ./tenants.json:/app/.dolittle/tenants.json
       - ./microservices.json:/app/.dolittle/microservices.json
       - ./appsettings.json:/app/appsettings.json
