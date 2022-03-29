@@ -16,5 +16,12 @@
             "servers": [ "mongo" ],
             "database": "embeddings_producer"
         }
+    },
+    "microservice": "5a4a2115-48cf-4055-8b8f-aac0bde47b7b",
+    "dolittle": {
+        "runtime": {
+            "host": "localhost",
+            "port": "50256"
+        }
     }
 }
