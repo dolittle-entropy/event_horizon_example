@@ -1,6 +1,6 @@
 using Dolittle.SDK;
 
-namespace Producer;
+namespace Consumer.Bootstrapping;
 
 /**
  * <summary>

@@ -1,4 +1,4 @@
-namespace Producer;
+namespace Consumer.Bootstrapping;
 
 /**
  * <summary>
@@ -16,7 +16,7 @@ public static class RoutingSetup
      */
     public static void SetupRouting(this IApplicationBuilder app, IWebHostEnvironment environment)
     {
-        app.UsePathBase("/_/producer/");
+        app.UsePathBase("/_/consumer/");
 
         app.UseDefaultFiles();
         app.UseStaticFiles();

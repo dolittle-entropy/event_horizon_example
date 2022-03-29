@@ -1,0 +1,10 @@
+{
+    "microservice": "b13e7583-dfe0-41d8-a706-4d25741fdaf5",
+    "singleTenantId": "8cfd0dbc-99e5-43d4-9cb3-3d46d240b06b",
+    "dolittle": {
+        "runtime": {
+            "host": "localhost",
+            "port": "50259"
+        }
+    }
+}

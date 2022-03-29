@@ -2,19 +2,13 @@
     "8cfd0dbc-99e5-43d4-9cb3-3d46d240b06b": {
         "eventStore": {
             "servers": [ "mongo" ],
-            "database": "event_store_consumer"
+            "database": "event_store_consumer",
+            "useSSL": false
         },
         "readModels": {
             "servers": [ "mongo" ],
-            "database": "read_models_consumer"
-        },
-        "projections": {
-            "servers": [ "mongo" ],
-            "database": "projections_consumer"
-        },
-        "embeddings": {
-            "servers": [ "mongo" ],
-            "database": "embeddings_consumer"
+            "database": "read_models_consumer",
+            "useSSL": false
         }
     }
 }

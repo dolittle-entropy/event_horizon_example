@@ -4,7 +4,7 @@ using Dolittle.SDK.Events.Store.Builders;
 using Dolittle.SDK.Tenancy;
 using dolittleExecutionContext = Dolittle.SDK.Execution.ExecutionContext;
 
-namespace Producer;
+namespace Consumer.Bootstrapping;
 
 /**
  * <summary>
@@ -46,7 +46,7 @@ public class SingleTenantExecutionContextManager
 
     static TenantId GetTenantId()
     {
-        var tenantId =  _configuration switch
+        var tenantId = _configuration switch
         {
             null => throw new SingleTenantIdIsNotConfigured(
                 "Configuration is not available - please call with a service provider at least once"

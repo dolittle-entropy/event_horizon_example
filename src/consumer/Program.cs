@@ -1,6 +1,6 @@
 using Dolittle.SDK;
 using Dolittle.SDK.Tenancy;
-using Producer.Bootstrapping;
+using Consumer.Bootstrapping;
 
 var builder = WebApplication.CreateBuilder(
     new WebApplicationOptions()
