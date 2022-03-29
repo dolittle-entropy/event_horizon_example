@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(
 );
 
 builder.Configuration.AddJsonFile("./.dolittle/resources.json");
-builder.Configuration.AddJsonFile("./data/configuration.json");
+builder.Configuration.AddJsonFile("./config/configuration.json");
 
 var dolittleClient = builder.Configuration.ConfigureClient();
 
