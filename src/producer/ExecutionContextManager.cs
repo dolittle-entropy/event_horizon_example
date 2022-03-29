@@ -4,7 +4,7 @@ using Dolittle.SDK.Events.Store.Builders;
 using Dolittle.SDK.Tenancy;
 using dolittleExecutionContext = Dolittle.SDK.Execution.ExecutionContext;
 
-namespace producer;
+namespace Producer;
 
 /**
  * <summary>

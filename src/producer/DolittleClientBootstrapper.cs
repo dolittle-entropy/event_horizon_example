@@ -3,7 +3,7 @@ using Dolittle.SDK;
 using Dolittle.SDK.Aggregates;
 using Dolittle.SDK.Events;
 
-namespace producer;
+namespace Producer;
 
 /**
  * <summary>

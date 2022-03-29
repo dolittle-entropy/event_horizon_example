@@ -1,6 +1,6 @@
 using dolittleExecutionContext = Dolittle.SDK.Execution.ExecutionContext;
 
-namespace producer;
+namespace Producer;
 
 public class Container : Dolittle.SDK.DependencyInversion.IContainer
 {

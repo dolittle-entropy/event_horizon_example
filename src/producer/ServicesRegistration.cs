@@ -1,6 +1,6 @@
 using Dolittle.SDK;
 
-namespace producer;
+namespace Producer;
 
 /**
  * <summary>
@@ -18,13 +18,23 @@ public static class ServicesRegistration
      * <param name="services"></param>
      * <param name="dolittleClient"></param>
      */
-    public static void RegisterServices(this IServiceCollection services, Client dolittleClient)
+    public static void RegisterServices(
+        this IServiceCollection services, Client dolittleClient
+    )
     {
-        services.Scan(select => select.FromEntryAssembly().AddClasses().AsMatchingInterface());
+        // IFoo -> Foo
+        services.Scan(select =>
+            select
+                .FromEntryAssembly()
+                .AddClasses()
+                .AsMatchingInterface()
+        );
         // services.Scan(select => select.FromEntryAssembly().AddClasses().AsSelf().WithTransientLifetime());
 
         services.AddSingleton(dolittleClient);
 
-        services.AddTransient(serviceProvider => SingleTenantExecutionContextManager.GetSingleTenant(serviceProvider));
+        services.AddTransient(serviceProvider =>
+            SingleTenantExecutionContextManager.GetSingleTenant(serviceProvider)
+        );
     }
 }

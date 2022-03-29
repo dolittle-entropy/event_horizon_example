@@ -1,4 +1,4 @@
-namespace producer;
+namespace Producer;
 
 /**
  * <summary>

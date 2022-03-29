@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0DA73670-952F-44DA-BE57-60B9A2D73BC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "producer", "src\producer\producer.csproj", "{4FE4BE9B-507E-406A-B10B-A5A1222408DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer", "src\producer\Producer.csproj", "{4FE4BE9B-507E-406A-B10B-A5A1222408DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "consumer", "src\consumer\consumer.csproj", "{0E7A12D6-64DA-4D1E-964D-C27FCBCCFF98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "src\consumer\Consumer.csproj", "{0E7A12D6-64DA-4D1E-964D-C27FCBCCFF98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
