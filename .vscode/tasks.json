@@ -2,40 +2,95 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "docker compose up",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "command": "docker-compose",
+            "type": "process",
+            "args": [
+                "up",
+                "-d"
+            ],
+        },
+        {
+            "label": "docker compose logs",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "command": "docker-compose",
+            "type": "process",
+            "args": [
+                "logs",
+                "-f"
+            ],
+        },
+        {
+            "label": "docker compose down",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "command": "docker-compose",
+            "type": "process",
+            "args": [
+                "down"
+            ],
+        },
+        {
+            "label": "build producer",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/producer/producer.csproj",
+                "${workspaceFolder}/src/producer/Producer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish",
+            "label": "build consumer",
+            "dependsOn": [
+                "docker compose up"
+            ],
             "command": "dotnet",
             "type": "process",
             "args": [
-                "publish",
-                "${workspaceFolder}/src/producer/producer.csproj",
+                "build",
+                "${workspaceFolder}/src/consumer/Consumer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "watch",
+            "label": "watch producer",
+            "command": "dotnet",
+            "type": "process",
+            "options": {
+                "cwd": "${workspaceFolder}/src/producer"
+            },
+            "args": [
+                "watch",
+                "run",
+                "--no-hot-reload"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch consumer",
+            "dependsOn": [
+                "docker compose up"
+            ],
+            "options": { "cwd": "${workspaceFolder}/src/consumer" },
             "command": "dotnet",
             "type": "process",
             "args": [
                 "watch",
                 "run",
-                "--project",
-                "${workspaceFolder}/src/producer/producer.csproj"
+                "--no-hot-reload"
             ],
             "problemMatcher": "$msCompile"
-        }
+        },
     ]
 }
